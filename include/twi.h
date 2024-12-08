@@ -8,7 +8,6 @@
 #define _TWI_H
 
 #include <stdint.h>
-#include <stdlib.h>
 
 // CONSTANTS
 #define F_MASTER 16000000  // FRECUENCIA DEL PROCESADOR: 16 MHz
@@ -33,14 +32,6 @@
 // MISC
 #define STATUS_REG_MASK 0xF8
 
-// Return Status Code
-enum twi_status {
-  SUCCESS = 0,
-  ERR_START_FAILED = 1,
-  ERR_ARBITRATION_LOST = 2,
-  ERR_NO_ACK = 3,
-  ERR_MEMORY_ALLOCATION_FAILED = 4,
-};
 
 /**
  * \brief Inicializa el TWI en modo maestro.
@@ -49,7 +40,7 @@ enum twi_status {
  * establece el registro de bit rate TWI para la frecuencia de CPU y TWI,
  * y habilita el TWI.
  */
-void master_init(uint8_t logs);
+void master_init();
 
 /**
  * \brief Inicializa el TWI en modo esclavo.
@@ -57,7 +48,7 @@ void master_init(uint8_t logs);
  * Configura el registro de dirección TWI con la dirección del esclavo
  * y habilita el TWI y la generación de ACK.
  */
-void slave_init(void);
+void slave_init();
 
 /**
  * \brief Inicializa el TWI en modo esclavo con una dirección específica.
